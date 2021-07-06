@@ -913,7 +913,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ValidateSchemaAsync(string dtmi)
+        public System.Threading.Tasks.Task<JSONSchema4> ValidateSchemaAsync(string dtmi)
         {
             return ValidateSchemaAsync(dtmi, System.Threading.CancellationToken.None);
         }
@@ -921,7 +921,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ValidateSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<JSONSchema4> ValidateSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
@@ -937,6 +937,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -961,7 +962,12 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<JSONSchema4>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         {
@@ -2026,6 +2032,149 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.Generic.ICollection<InterfaceWithChildren> Children { get; set; } = new System.Collections.ObjectModel.Collection<InterfaceWithChildren>();
+    
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class JSONSchema4 
+    {
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("$ref", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Ref { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("$schema", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Schema { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Title { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Description { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("default", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Default { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("multipleOf", Required = Newtonsoft.Json.Required.Always)]
+        public double MultipleOf { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("maximum", Required = Newtonsoft.Json.Required.Always)]
+        public double Maximum { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("exclusiveMaximum", Required = Newtonsoft.Json.Required.Always)]
+        public bool ExclusiveMaximum { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("minimum", Required = Newtonsoft.Json.Required.Always)]
+        public double Minimum { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("exclusiveMinimum", Required = Newtonsoft.Json.Required.Always)]
+        public bool ExclusiveMinimum { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("maxLength", Required = Newtonsoft.Json.Required.Always)]
+        public double MaxLength { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("minLength", Required = Newtonsoft.Json.Required.Always)]
+        public double MinLength { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("pattern", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Pattern { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("additionalItems", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object AdditionalItems { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Items { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("maxItems", Required = Newtonsoft.Json.Required.Always)]
+        public double MaxItems { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("minItems", Required = Newtonsoft.Json.Required.Always)]
+        public double MinItems { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("uniqueItems", Required = Newtonsoft.Json.Required.Always)]
+        public bool UniqueItems { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("maxProperties", Required = Newtonsoft.Json.Required.Always)]
+        public double MaxProperties { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("minProperties", Required = Newtonsoft.Json.Required.Always)]
+        public double MinProperties { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("required", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Required { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("additionalProperties", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object AdditionalProperties { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("definitions", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Definitions { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Properties { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("patternProperties", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object PatternProperties { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("dependencies", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Dependencies { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("enum", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.Generic.ICollection<string> Enum { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+    
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Type { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("allOf", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.Generic.ICollection<string> AllOf { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+    
+        [Newtonsoft.Json.JsonProperty("anyOf", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.Generic.ICollection<string> AnyOf { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+    
+        [Newtonsoft.Json.JsonProperty("oneOf", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.Collections.Generic.ICollection<string> OneOf { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+    
+        [Newtonsoft.Json.JsonProperty("not", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public JSONSchema4 Not { get; set; } = new JSONSchema4();
+    
+        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Extends { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Format { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
