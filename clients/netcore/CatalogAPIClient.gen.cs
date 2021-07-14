@@ -42,23 +42,25 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+        /// <summary>Get the stored model entity.</summary>
         /// <returns>Returns the requested model entity based on its dtmi.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ModelEntity> ManageServicesAsync(string dtmi)
+        public System.Threading.Tasks.Task<ModelEntity> GetEntityAsync(string dtmi)
         {
-            return ManageServicesAsync(dtmi, System.Threading.CancellationToken.None);
+            return GetEntityAsync(dtmi, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the stored model entity.</summary>
         /// <returns>Returns the requested model entity based on its dtmi.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ModelEntity> ManageServicesAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<ModelEntity> GetEntityAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
     
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("manage/services/{dtmi}");
+            urlBuilder_.Append("manage/entity/{dtmi}");
             urlBuilder_.Replace("{dtmi}", System.Uri.EscapeDataString(ConvertToString(dtmi, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
@@ -120,17 +122,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
+        /// <summary>Get all stored model entities.</summary>
         /// <returns>Returns all stored model entities.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Response> ManageModelsGetAsync(double size, double page)
+        public System.Threading.Tasks.Task<ModelEntityPagedResult> GetAllEntitiesAsync(double size, double page)
         {
-            return ManageModelsGetAsync(size, page, System.Threading.CancellationToken.None);
+            return GetAllEntitiesAsync(size, page, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get all stored model entities.</summary>
         /// <returns>Returns all stored model entities.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> ManageModelsGetAsync(double size, double page, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<ModelEntityPagedResult> GetAllEntitiesAsync(double size, double page, System.Threading.CancellationToken cancellationToken)
         {
             if (size == null)
                 throw new System.ArgumentNullException("size");
@@ -139,7 +143,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                 throw new System.ArgumentNullException("page");
     
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("manage/models?");
+            urlBuilder_.Append("manage/entities?");
             urlBuilder_.Append(System.Uri.EscapeDataString("size") + "=").Append(System.Uri.EscapeDataString(ConvertToString(size, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
@@ -176,7 +180,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ModelEntityPagedResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -203,97 +207,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
-        /// <returns>The record has been successfully created.</returns>
+        /// <summary>Add a new model to the catalog api.</summary>
+        /// <returns>The model has been successfully added.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> ManageModelsPostAsync(System.Collections.Generic.IEnumerable<Interface> body)
+        public System.Threading.Tasks.Task<ModelEntity> AddNewModelAsync(Interface body)
         {
-            return ManageModelsPostAsync(body, System.Threading.CancellationToken.None);
+            return AddNewModelAsync(body, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The record has been successfully created.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> ManageModelsPostAsync(System.Collections.Generic.IEnumerable<Interface> body, System.Threading.CancellationToken cancellationToken)
-        {
-            if (body == null)
-                throw new System.ArgumentNullException("body");
-    
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("manage/models");
-    
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-    
-                    PrepareRequest(client_, request_, urlBuilder_);
-    
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-    
-                    PrepareRequest(client_, request_, url_);
-    
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-    
-                        ProcessResponse(client_, response_);
-    
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 201)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ModelEntity>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-    
+        /// <summary>Add a new model to the catalog api.</summary>
         /// <returns>The model has been successfully added.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ModelEntity> ManageModelAsync(Interface body)
-        {
-            return ManageModelAsync(body, System.Threading.CancellationToken.None);
-        }
-    
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The model has been successfully added.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ModelEntity> ManageModelAsync(Interface body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<ModelEntity> AddNewModelAsync(Interface body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -363,23 +289,107 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
-        /// <returns>The model has been successfully added.</returns>
+        /// <summary>Add multiple new models to the catalog api.</summary>
+        /// <returns>The record has been successfully created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ModelEntity> ManageServicesRevokeAsync(string dtmi)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> AddNewModelsAsync(System.Collections.Generic.IEnumerable<Interface> body)
         {
-            return ManageServicesRevokeAsync(dtmi, System.Threading.CancellationToken.None);
+            return AddNewModelsAsync(body, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Add multiple new models to the catalog api.</summary>
+        /// <returns>The record has been successfully created.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> AddNewModelsAsync(System.Collections.Generic.IEnumerable<Interface> body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (body == null)
+                throw new System.ArgumentNullException("body");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("manage/models");
+    
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+    
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+    
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 201)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ModelEntity>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+    
+        /// <summary>Revoke a model.</summary>
         /// <returns>The model has been successfully added.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ModelEntity> ManageServicesRevokeAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public System.Threading.Tasks.Task<ModelEntity> RevokeModelAsync(string dtmi)
+        {
+            return RevokeModelAsync(dtmi, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Revoke a model.</summary>
+        /// <returns>The model has been successfully added.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ModelEntity> RevokeModelAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
     
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("manage/services/{dtmi}/revoke");
+            urlBuilder_.Append("manage/model/{dtmi}/revoke");
             urlBuilder_.Replace("{dtmi}", System.Uri.EscapeDataString(ConvertToString(dtmi, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = _httpClient;
@@ -442,17 +452,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
+        /// <summary>Get all stored models in expanded form.</summary>
         /// <returns>Returns all stored models in their expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Response2> GraphExpandedAsync(double size, double page)
+        public System.Threading.Tasks.Task<ExpandedInterfacePagedResult> GetExpandedModelsAsync(double size, double page)
         {
-            return GraphExpandedAsync(size, page, System.Threading.CancellationToken.None);
+            return GetExpandedModelsAsync(size, page, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get all stored models in expanded form.</summary>
         /// <returns>Returns all stored models in their expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response2> GraphExpandedAsync(double size, double page, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<ExpandedInterfacePagedResult> GetExpandedModelsAsync(double size, double page, System.Threading.CancellationToken cancellationToken)
         {
             if (size == null)
                 throw new System.ArgumentNullException("size");
@@ -498,7 +510,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ExpandedInterfacePagedResult>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -525,17 +537,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
+        /// <summary>Get stored root models in expanded form.</summary>
         /// <returns>Returns root models in their expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GraphRootsAsync()
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetRootsAsync()
         {
-            return GraphRootsAsync(System.Threading.CancellationToken.None);
+            return GetRootsAsync(System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get stored root models in expanded form.</summary>
         /// <returns>Returns root models in their expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GraphRootsAsync(System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetRootsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("graph/roots");
@@ -599,91 +613,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
-        /// <returns>Returns root models with their children in their expanded representation.</returns>
+        /// <summary>Get the requested model in expanded form.</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<InterfaceWithChildren>> GraphRootswithchildrenAsync()
+        public System.Threading.Tasks.Task<ExpandedInterface> GetExpandedAsync(string dtmi)
         {
-            return GraphRootswithchildrenAsync(System.Threading.CancellationToken.None);
+            return GetExpandedAsync(dtmi, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Returns root models with their children in their expanded representation.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<InterfaceWithChildren>> GraphRootswithchildrenAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("graph/rootswithchildren");
-    
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-    
-                    PrepareRequest(client_, request_, urlBuilder_);
-    
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-    
-                    PrepareRequest(client_, request_, url_);
-    
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-    
-                        ProcessResponse(client_, response_);
-    
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<InterfaceWithChildren>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-    
+        /// <summary>Get the requested model in expanded form.</summary>
         /// <returns>Returns a model in its expanded representation.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GraphExpandAsync(string dtmi)
-        {
-            return GraphExpandAsync(dtmi, System.Threading.CancellationToken.None);
-        }
-    
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Returns a model in its expanded representation.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GraphExpandAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<ExpandedInterface> GetExpandedAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
@@ -724,7 +666,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ExpandedInterface>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ExpandedInterface>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -751,17 +693,19 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
+        /// <summary>Get the involved relationships between two models.</summary>
         /// <returns>Returns the possible relationships between two models.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GraphRelationshipsAsync(string sourceDtmi, string targetDtmi)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetRelationshipsAsync(string sourceDtmi, string targetDtmi)
         {
-            return GraphRelationshipsAsync(sourceDtmi, targetDtmi, System.Threading.CancellationToken.None);
+            return GetRelationshipsAsync(sourceDtmi, targetDtmi, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the involved relationships between two models.</summary>
         /// <returns>Returns the possible relationships between two models.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GraphRelationshipsAsync(string sourceDtmi, string targetDtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetRelationshipsAsync(string sourceDtmi, string targetDtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (sourceDtmi == null)
                 throw new System.ArgumentNullException("sourceDtmi");
@@ -833,17 +777,99 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
             }
         }
     
-        /// <returns>Returns a model based on its dtmi</returns>
+        /// <summary>Get the outgoing relationships of a model.</summary>
+        /// <returns>Returns the possible relationships.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Interface> GraphAsync(string dtmi)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetOutgoingRelationshipsAsync(string sourceDtmi)
         {
-            return GraphAsync(dtmi, System.Threading.CancellationToken.None);
+            return GetOutgoingRelationshipsAsync(sourceDtmi, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the outgoing relationships of a model.</summary>
+        /// <returns>Returns the possible relationships.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetOutgoingRelationshipsAsync(string sourceDtmi, System.Threading.CancellationToken cancellationToken)
+        {
+            if (sourceDtmi == null)
+                throw new System.ArgumentNullException("sourceDtmi");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("graph/relationships/{sourceDtmi}");
+            urlBuilder_.Replace("{sourceDtmi}", System.Uri.EscapeDataString(ConvertToString(sourceDtmi, System.Globalization.CultureInfo.InvariantCulture)));
+    
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+    
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+    
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<Relationship>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+    
+        /// <summary>Get plain DTDL model.</summary>
         /// <returns>Returns a model based on its dtmi</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Interface> GraphAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public System.Threading.Tasks.Task<Interface> GetDTDLModelAsync(string dtmi)
+        {
+            return GetDTDLModelAsync(dtmi, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get plain DTDL model.</summary>
+        /// <returns>Returns a model based on its dtmi</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Interface> GetDTDLModelAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
@@ -913,15 +939,15 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<JSONSchema4> ValidateSchemaAsync(string dtmi)
+        public System.Threading.Tasks.Task<JSONSchema4> ValidationController_getSchemaAsync(string dtmi)
         {
-            return ValidateSchemaAsync(dtmi, System.Threading.CancellationToken.None);
+            return ValidationController_getSchemaAsync(dtmi, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<JSONSchema4> ValidateSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<JSONSchema4> ValidationController_getSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
@@ -992,16 +1018,16 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         /// <summary>Validate twin instance</summary>
         /// <returns>Returns validation result for instance.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SchemaValidationError> ValidateAsync(BaseDigitalTwin body)
+        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(BaseDigitalTwin body)
         {
-            return ValidateAsync(body, System.Threading.CancellationToken.None);
+            return ValidationController_validateInstanceAsync(body, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Validate twin instance</summary>
         /// <returns>Returns validation result for instance.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SchemaValidationError> ValidateAsync(BaseDigitalTwin body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(BaseDigitalTwin body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1074,16 +1100,16 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         /// <summary>Validate twin graph</summary>
         /// <returns>Returns validation result for twin graph.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SchemaValidationError> ValidateGraphAsync(DigitalTwinModel body)
+        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(DigitalTwinModel body)
         {
-            return ValidateGraphAsync(body, System.Threading.CancellationToken.None);
+            return ValidationController_validateGraphAsync(body, System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Validate twin graph</summary>
         /// <returns>Returns validation result for twin graph.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SchemaValidationError> ValidateGraphAsync(DigitalTwinModel body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(DigitalTwinModel body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1863,11 +1889,11 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class PagedResult 
+    public partial class ModelEntityPagedResult 
     {
         [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<string> Data { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+        public System.Collections.Generic.ICollection<ModelEntity> Data { get; set; } = new System.Collections.ObjectModel.Collection<ModelEntity>();
     
         [Newtonsoft.Json.JsonProperty("totalCount", Required = Newtonsoft.Json.Required.Always)]
         public double TotalCount { get; set; }
@@ -1992,46 +2018,14 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class InterfaceWithChildren 
+    public partial class ExpandedInterfacePagedResult 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Id { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Comment { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public InterfaceWithChildrenType Type { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@context", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public InterfaceWithChildrenContext Context { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Contents2> Contents { get; set; } = new System.Collections.ObjectModel.Collection<Contents2>();
+        public System.Collections.Generic.ICollection<ExpandedInterface> Data { get; set; } = new System.Collections.ObjectModel.Collection<ExpandedInterface>();
     
-        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<string> Extends { get; set; } = new System.Collections.ObjectModel.Collection<string>();
-    
-        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<InterfaceSchema> Schemas { get; set; } = new System.Collections.ObjectModel.Collection<InterfaceSchema>();
-    
-        [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<InterfaceWithChildren> Children { get; set; } = new System.Collections.ObjectModel.Collection<InterfaceWithChildren>();
+        [Newtonsoft.Json.JsonProperty("totalCount", Required = Newtonsoft.Json.Required.Always)]
+        public double TotalCount { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2363,42 +2357,6 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Response : PagedResult
-    {
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<ModelEntity> Data { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Response2 : PagedResult
-    {
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<ExpandedInterface> Data { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public enum ArraySchemaType
     {
         [System.Runtime.Serialization.EnumMember(Value = @"Array")]
@@ -2531,37 +2489,6 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     {
         [System.Runtime.Serialization.EnumMember(Value = @"dtmi:dtdl:context;2")]
         DtmiDtdlContext_2 = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum InterfaceWithChildrenType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Interface")]
-        Interface = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum InterfaceWithChildrenContext
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"dtmi:dtdl:context;2")]
-        DtmiDtdlContext_2 = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Contents2 
-    {
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
     
     }
 
