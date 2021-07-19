@@ -26,7 +26,7 @@ namespace Tributech.Dataspace.ClientExamples {
                 var apiClient = new CatalogAPIClient(authorizedHttpClient);
 
                 // Get all stored models in expanded form
-                Response2 data = await apiClient.GraphExpandedAsync(10, 1);
+                ExpandedInterfacePagedResult data = await apiClient.GetExpandedModelsAsync(10, 1);
 
                 foreach(var item in data.Data) {
                     Console.WriteLine($"{item.Id}: DisplayName {item.DisplayName}");
