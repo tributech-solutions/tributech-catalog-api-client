@@ -1285,8 +1285,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class ArraySchema 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1322,8 +1321,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class EnumValue 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1358,8 +1356,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class EnumSchema 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1399,8 +1396,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class MapKey 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1435,8 +1431,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class MapValue 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1471,8 +1466,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class MapSchema 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1512,8 +1506,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Field 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1548,8 +1541,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class ObjectSchema 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1585,8 +1577,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Property 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1611,11 +1602,10 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Schema { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Unit { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("writable", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("writable", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool Writable { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -1633,8 +1623,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Relationship 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1655,18 +1644,16 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Name { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("maxMultiplicity", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("maxMultiplicity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double MaxMultiplicity { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("minMultiplicity", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("minMultiplicity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double MinMultiplicity { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Property> Properties { get; set; } = new System.Collections.ObjectModel.Collection<Property>();
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Property> Properties { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("target", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("target", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Target { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -1684,8 +1671,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Component 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1725,8 +1711,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Command 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1747,17 +1732,14 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Name { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("commandType", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public object CommandType { get; set; } = new object();
+        [Newtonsoft.Json.JsonProperty("commandType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object CommandType { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("request", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public object Request { get; set; } = new object();
+        [Newtonsoft.Json.JsonProperty("request", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object Request { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("response", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public object Response { get; set; } = new object();
+        [Newtonsoft.Json.JsonProperty("response", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public object Response { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -1774,8 +1756,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class InterfaceSchema 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1807,8 +1788,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Interface 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1830,17 +1810,14 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public InterfaceContext Context { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Contents> Contents { get; set; } = new System.Collections.ObjectModel.Collection<Contents>();
+        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Contents> Contents { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<string> Extends { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Extends { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<InterfaceSchema> Schemas { get; set; } = new System.Collections.ObjectModel.Collection<InterfaceSchema>();
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<InterfaceSchema> Schemas { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -1913,8 +1890,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Telemetry 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1926,8 +1902,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public Type2 Type { get; set; }
     
@@ -1939,8 +1914,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Schema { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Unit { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -1958,8 +1932,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class ExpandedInterface 
     {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1981,29 +1954,23 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public ExpandedInterfaceContext Context { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Schema { get; set; }
+        [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Schemas { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("bases", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<string> Bases { get; set; } = new System.Collections.ObjectModel.Collection<string>();
+        [Newtonsoft.Json.JsonProperty("bases", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string> Bases { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Property> Properties { get; set; } = new System.Collections.ObjectModel.Collection<Property>();
+        [Newtonsoft.Json.JsonProperty("properties", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Property> Properties { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("relationships", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Relationship> Relationships { get; set; } = new System.Collections.ObjectModel.Collection<Relationship>();
+        [Newtonsoft.Json.JsonProperty("relationships", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Relationship> Relationships { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("telemetries", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Telemetry> Telemetries { get; set; } = new System.Collections.ObjectModel.Collection<Telemetry>();
+        [Newtonsoft.Json.JsonProperty("telemetries", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Telemetry> Telemetries { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("components", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<Component> Components { get; set; } = new System.Collections.ObjectModel.Collection<Component>();
+        [Newtonsoft.Json.JsonProperty("components", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Component> Components { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2117,11 +2084,7 @@ namespace Tributech.Dsk.Api.Clients.CatalogApi
         [Newtonsoft.Json.JsonProperty("required", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public object Required { get; set; } = new object();
-    
-        [Newtonsoft.Json.JsonProperty("additionalProperties", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public object AdditionalProperties { get; set; } = new object();
-    
+
         [Newtonsoft.Json.JsonProperty("definitions", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public object Definitions { get; set; } = new object();
