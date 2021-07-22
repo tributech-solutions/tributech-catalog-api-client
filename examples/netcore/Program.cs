@@ -25,11 +25,12 @@ namespace Tributech.Dataspace.ClientExamples {
                 authorizedHttpClient.BaseAddress = new Uri(nodeUrl);
                 var apiClient = new CatalogAPIClient(authorizedHttpClient);
 
-                // Get all stored models in expanded form
-                ExpandedInterfacePagedResult data = await apiClient.GetExpandedModelsAsync(10, 1);
+                // Get all stored models
+                var data = await apiClient.GetAllEntitiesAsync(100, 0);
 
-                foreach(var item in data.Data) {
-                    Console.WriteLine($"{item.Id}: DisplayName {item.DisplayName}");
+                foreach (var item in data.Data)
+                {
+                    Console.WriteLine($"{item.Model.Id}: DisplayName {item.Model.DisplayName}");
                 }
             }
         }
