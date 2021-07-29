@@ -37,10 +37,10 @@ authorizedHttpClient.BaseAddress = new Uri(baseUrl);
 
 ### Interacting with the API
 
-Create a CatalogAPIClient using the authorizedHttpClient from the previous step.
+Create a CatalogApiClient using the authorizedHttpClient from the previous step.
 
 ```csharp
-var apiClient = new CatalogAPIClient(authorizedHttpClient);
+var apiClient = new CatalogApiClient(authorizedHttpClient);
 ```
 
 Now you can access all methods of the respective Api.

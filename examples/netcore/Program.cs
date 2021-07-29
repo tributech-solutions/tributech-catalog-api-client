@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Net.Http;
-using Tributech.Dsk.Api.Clients;
-using Tributech.Dsk.Api.Clients.CatalogApi;
+using Tributech.Dsk.CatalogApi.Client;
 
 namespace Tributech.Dataspace.ClientExamples {
     class Program {
@@ -23,7 +22,7 @@ namespace Tributech.Dataspace.ClientExamples {
             var authHandler = new APIAuthHandler(tokenUrl, scope, clientId, clientSecret);
             using (var authorizedHttpClient = new HttpClient(authHandler)) {
                 authorizedHttpClient.BaseAddress = new Uri(nodeUrl);
-                var apiClient = new CatalogAPIClient(authorizedHttpClient);
+                var apiClient = new CatalogApiClient(authorizedHttpClient);
 
                 // Get all stored models
                 var data = await apiClient.GetAllEntitiesAsync(100, 0);
