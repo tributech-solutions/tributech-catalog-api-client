@@ -17,7 +17,208 @@ namespace Tributech.Dsk.CatalogApi.Client
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.12.0.0 (NJsonSchema v10.4.5.0 (Newtonsoft.Json v12.0.0.0))")]
-    public partial class CatalogApiClient 
+    public partial interface ICatalogApiClient
+    {
+        /// <summary>Get the stored model entity.</summary>
+        /// <returns>Returns the requested model entity based on its dtmi.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> GetEntityAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the stored model entity.</summary>
+        /// <returns>Returns the requested model entity based on its dtmi.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> GetEntityAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get all stored model entities.</summary>
+        /// <returns>Returns all stored model entities.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntityPagedResult> GetAllEntitiesAsync(double size, double page);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get all stored model entities.</summary>
+        /// <returns>Returns all stored model entities.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntityPagedResult> GetAllEntitiesAsync(double size, double page, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Add a new model to the catalog api.</summary>
+        /// <returns>The model has been successfully added.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> AddNewModelAsync(Interface body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Add a new model to the catalog api.</summary>
+        /// <returns>The model has been successfully added.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> AddNewModelAsync(Interface body, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Add multiple new models to the catalog api.</summary>
+        /// <returns>The record has been successfully created.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> AddNewModelsAsync(System.Collections.Generic.IEnumerable<Interface> body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Add multiple new models to the catalog api.</summary>
+        /// <returns>The record has been successfully created.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ModelEntity>> AddNewModelsAsync(System.Collections.Generic.IEnumerable<Interface> body, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Revoke a model.</summary>
+        /// <returns>The model has been successfully added.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> RevokeModelAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Revoke a model.</summary>
+        /// <returns>The model has been successfully added.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ModelEntity> RevokeModelAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get all stored models in expanded form.</summary>
+        /// <returns>Returns all stored models in their expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterfacePagedResult> GetExpandedModelsAsync(double size, double page);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get all stored models in expanded form.</summary>
+        /// <returns>Returns all stored models in their expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterfacePagedResult> GetExpandedModelsAsync(double size, double page, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get stored root models in expanded form.</summary>
+        /// <returns>Returns root models in their expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetRootsAsync();
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get stored root models in expanded form.</summary>
+        /// <returns>Returns root models in their expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetRootsAsync(System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Gets the bases of the requested model</summary>
+        /// <returns>Returns the bases of a model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetBasesAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Gets the bases of the requested model</summary>
+        /// <returns>Returns the bases of a model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetBasesAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Gets the children of the requested model up to a optionally specified depth</summary>
+        /// <returns>Returns the children of a model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetChildrenAsync(string dtmi, double? depth);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Gets the children of the requested model up to a optionally specified depth</summary>
+        /// <returns>Returns the children of a model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ExpandedInterface>> GetChildrenAsync(string dtmi, double? depth, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get the requested model in expanded form.</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetExpandedAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the requested model in expanded form.</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetExpandedAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get the requested model in simplified form.</summary>
+        /// <returns>Returns a model in its simplified representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetSimplifiedAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the requested model in simplified form.</summary>
+        /// <returns>Returns a model in its simplified representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetSimplifiedAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get the requested model with related models inlined (JSON-LD representation).</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetFullyExpandedAsync(string dtmi, bool? includeContext);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the requested model with related models inlined (JSON-LD representation).</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<ExpandedInterface> GetFullyExpandedAsync(string dtmi, bool? includeContext, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get the involved relationships between two models.</summary>
+        /// <returns>Returns the possible relationships between two models.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetRelationshipsAsync(string sourceDtmi, string targetDtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the involved relationships between two models.</summary>
+        /// <returns>Returns the possible relationships between two models.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetRelationshipsAsync(string sourceDtmi, string targetDtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get the outgoing relationships of a model.</summary>
+        /// <returns>Returns the possible relationships.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetOutgoingRelationshipsAsync(string sourceDtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the outgoing relationships of a model.</summary>
+        /// <returns>Returns the possible relationships.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Relationship>> GetOutgoingRelationshipsAsync(string sourceDtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Get plain DTDL model.</summary>
+        /// <returns>Returns a model based on its dtmi</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Interface> GetDTDLModelAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get plain DTDL model.</summary>
+        /// <returns>Returns a model based on its dtmi</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Interface> GetDTDLModelAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <returns>Returns a JSON schema for the requested model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Schema> ValidationController_getSchemaAsync(string dtmi);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Returns a JSON schema for the requested model</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Schema> ValidationController_getSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Validate twin instance</summary>
+        /// <returns>Returns validation result for instance.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(TwinInstance body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Validate twin instance</summary>
+        /// <returns>Returns validation result for instance.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(TwinInstance body, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Validate twin graph</summary>
+        /// <returns>Returns validation result for twin graph.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(TwinGraph body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Validate twin graph</summary>
+        /// <returns>Returns validation result for twin graph.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(TwinGraph body, System.Threading.CancellationToken cancellationToken);
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.12.0.0 (NJsonSchema v10.4.5.0 (Newtonsoft.Json v12.0.0.0))")]
+    public partial class CatalogApiClient : ICatalogApiClient
     {
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
@@ -859,6 +1060,171 @@ namespace Tributech.Dsk.CatalogApi.Client
             }
         }
     
+        /// <summary>Get the requested model in simplified form.</summary>
+        /// <returns>Returns a model in its simplified representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<ExpandedInterface> GetSimplifiedAsync(string dtmi)
+        {
+            return GetSimplifiedAsync(dtmi, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the requested model in simplified form.</summary>
+        /// <returns>Returns a model in its simplified representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ExpandedInterface> GetSimplifiedAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        {
+            if (dtmi == null)
+                throw new System.ArgumentNullException("dtmi");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("graph/{dtmi}/simplified");
+            urlBuilder_.Replace("{dtmi}", System.Uri.EscapeDataString(ConvertToString(dtmi, System.Globalization.CultureInfo.InvariantCulture)));
+    
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+    
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+    
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ExpandedInterface>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+    
+        /// <summary>Get the requested model with related models inlined (JSON-LD representation).</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<ExpandedInterface> GetFullyExpandedAsync(string dtmi, bool? includeContext)
+        {
+            return GetFullyExpandedAsync(dtmi, includeContext, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get the requested model with related models inlined (JSON-LD representation).</summary>
+        /// <returns>Returns a model in its expanded representation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ExpandedInterface> GetFullyExpandedAsync(string dtmi, bool? includeContext, System.Threading.CancellationToken cancellationToken)
+        {
+            if (dtmi == null)
+                throw new System.ArgumentNullException("dtmi");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("graph/{dtmi}/full-expand?");
+            urlBuilder_.Replace("{dtmi}", System.Uri.EscapeDataString(ConvertToString(dtmi, System.Globalization.CultureInfo.InvariantCulture)));
+            if (includeContext != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("includeContext") + "=").Append(System.Uri.EscapeDataString(ConvertToString(includeContext, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
+    
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+    
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+    
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ExpandedInterface>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+    
         /// <summary>Get the involved relationships between two models.</summary>
         /// <returns>Returns the possible relationships between two models.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1105,7 +1471,7 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<JSONSchema4> ValidationController_getSchemaAsync(string dtmi)
+        public System.Threading.Tasks.Task<Schema> ValidationController_getSchemaAsync(string dtmi)
         {
             return ValidationController_getSchemaAsync(dtmi, System.Threading.CancellationToken.None);
         }
@@ -1113,7 +1479,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns a JSON schema for the requested model</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<JSONSchema4> ValidationController_getSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Schema> ValidationController_getSchemaAsync(string dtmi, System.Threading.CancellationToken cancellationToken)
         {
             if (dtmi == null)
                 throw new System.ArgumentNullException("dtmi");
@@ -1154,7 +1520,7 @@ namespace Tributech.Dsk.CatalogApi.Client
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<JSONSchema4>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<Schema>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -1184,7 +1550,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         /// <summary>Validate twin instance</summary>
         /// <returns>Returns validation result for instance.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(BaseDigitalTwin body)
+        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(TwinInstance body)
         {
             return ValidationController_validateInstanceAsync(body, System.Threading.CancellationToken.None);
         }
@@ -1193,7 +1559,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         /// <summary>Validate twin instance</summary>
         /// <returns>Returns validation result for instance.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(BaseDigitalTwin body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateInstanceAsync(TwinInstance body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1266,7 +1632,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         /// <summary>Validate twin graph</summary>
         /// <returns>Returns validation result for twin graph.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(DigitalTwinModel body)
+        public System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(TwinGraph body)
         {
             return ValidationController_validateGraphAsync(body, System.Threading.CancellationToken.None);
         }
@@ -1275,7 +1641,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         /// <summary>Validate twin graph</summary>
         /// <returns>Returns validation result for twin graph.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(DigitalTwinModel body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<SchemaValidationError> ValidationController_validateGraphAsync(TwinGraph body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1454,6 +1820,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1462,11 +1831,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ArraySchemaType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("elementSchema", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -1489,6 +1853,9 @@ namespace Tributech.Dsk.CatalogApi.Client
     {
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
@@ -1525,6 +1892,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1533,11 +1903,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public EnumSchemaType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("enumValues", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
@@ -1564,6 +1929,9 @@ namespace Tributech.Dsk.CatalogApi.Client
     {
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
@@ -1600,6 +1968,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1635,6 +2006,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1643,11 +2017,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public MapSchemaType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("mapKey", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
@@ -1674,6 +2043,9 @@ namespace Tributech.Dsk.CatalogApi.Client
     {
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
@@ -1710,6 +2082,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1718,11 +2093,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ObjectSchemaType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("fields", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
@@ -1746,6 +2116,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1754,11 +2127,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Type Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -1792,6 +2160,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1800,11 +2171,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RelationshipType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -1821,6 +2187,9 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("target", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Target { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("writable", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Writable { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -1840,6 +2209,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1848,11 +2220,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ComponentType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -1875,10 +2242,13 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Command 
+    public partial class CommandPayload 
     {
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
@@ -1889,23 +2259,94 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CommandType Type { get; set; }
+        public string Schema { get; set; }
     
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Name { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("commandType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public object CommandType { get; set; }
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Command 
+    {
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Comment { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Description { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DisplayName { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Name { get; set; }
     
         [Newtonsoft.Json.JsonProperty("request", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public object Request { get; set; }
+        public CommandPayload Request { get; set; }
     
         [Newtonsoft.Json.JsonProperty("response", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public object Response { get; set; }
+        public CommandPayload Response { get; set; }
+    
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Telemetry 
+    {
+        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Comment { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Description { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DisplayName { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Schema { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Unit { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Name { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -1925,6 +2366,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1933,11 +2377,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public InterfaceSchemaType Type { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -1957,6 +2396,9 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -1965,11 +2407,6 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public InterfaceType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("@context", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2054,53 +2491,14 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Telemetry 
-    {
-        [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Comment { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Type2 Type { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Name { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("schema", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Schema { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("unit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Unit { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class ExpandedInterface 
     {
         [Newtonsoft.Json.JsonProperty("@id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Id { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public System.Collections.Generic.ICollection<_type> Type { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Comment { get; set; }
     
@@ -2109,19 +2507,20 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DisplayName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("@type", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ExpandedInterfaceType Type { get; set; }
     
         [Newtonsoft.Json.JsonProperty("@context", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public ExpandedInterfaceContext Context { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Contents2> Contents { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Extends { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("schemas", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Schemas { get; set; }
+        public System.Collections.Generic.ICollection<InterfaceSchema> Schemas { get; set; }
     
         [Newtonsoft.Json.JsonProperty("bases", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> Bases { get; set; }
@@ -2137,6 +2536,9 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("components", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Component> Components { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("commands", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Command> Commands { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2173,19 +2575,19 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class JSONSchema4 
+    public partial class Schema 
     {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("$id", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Id { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("$schema", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Schema1 { get; set; }
     
         [Newtonsoft.Json.JsonProperty("$ref", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Ref { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("$schema", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Schema { get; set; }
     
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2195,10 +2597,6 @@ namespace Tributech.Dsk.CatalogApi.Client
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Description { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("default", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required]
-        public object Default { get; set; } = new object();
-    
         [Newtonsoft.Json.JsonProperty("multipleOf", Required = Newtonsoft.Json.Required.Always)]
         public double MultipleOf { get; set; }
     
@@ -2206,13 +2604,15 @@ namespace Tributech.Dsk.CatalogApi.Client
         public double Maximum { get; set; }
     
         [Newtonsoft.Json.JsonProperty("exclusiveMaximum", Required = Newtonsoft.Json.Required.Always)]
-        public bool ExclusiveMaximum { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public object ExclusiveMaximum { get; set; } = new object();
     
         [Newtonsoft.Json.JsonProperty("minimum", Required = Newtonsoft.Json.Required.Always)]
         public double Minimum { get; set; }
     
         [Newtonsoft.Json.JsonProperty("exclusiveMinimum", Required = Newtonsoft.Json.Required.Always)]
-        public bool ExclusiveMinimum { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public object ExclusiveMinimum { get; set; } = new object();
     
         [Newtonsoft.Json.JsonProperty("maxLength", Required = Newtonsoft.Json.Required.Always)]
         public double MaxLength { get; set; }
@@ -2221,8 +2621,8 @@ namespace Tributech.Dsk.CatalogApi.Client
         public double MinLength { get; set; }
     
         [Newtonsoft.Json.JsonProperty("pattern", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Pattern { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Pattern { get; set; } = new object();
     
         [Newtonsoft.Json.JsonProperty("additionalItems", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
@@ -2250,7 +2650,7 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("required", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public object Required { get; set; } = new object();
-    
+
         [Newtonsoft.Json.JsonProperty("definitions", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public object Definitions { get; set; } = new object();
@@ -2267,6 +2667,10 @@ namespace Tributech.Dsk.CatalogApi.Client
         [System.ComponentModel.DataAnnotations.Required]
         public object Dependencies { get; set; } = new object();
     
+        [Newtonsoft.Json.JsonProperty("const", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public object Const { get; set; } = new object();
+    
         [Newtonsoft.Json.JsonProperty("enum", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.Generic.ICollection<string> Enum { get; set; } = new System.Collections.ObjectModel.Collection<string>();
@@ -2274,6 +2678,10 @@ namespace Tributech.Dsk.CatalogApi.Client
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         public object Type { get; set; } = new object();
+    
+        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Format { get; set; }
     
         [Newtonsoft.Json.JsonProperty("allOf", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
@@ -2289,15 +2697,19 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("not", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public JSONSchema4 Not { get; set; } = new JSONSchema4();
+        public Schema Not { get; set; } = new Schema();
     
-        [Newtonsoft.Json.JsonProperty("extends", Required = Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonProperty("if", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public object Extends { get; set; } = new object();
+        public Schema If { get; set; } = new Schema();
     
-        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Format { get; set; }
+        [Newtonsoft.Json.JsonProperty("then", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public Schema Then { get; set; } = new Schema();
+    
+        [Newtonsoft.Json.JsonProperty("else", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public Schema Else { get; set; } = new Schema();
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2312,7 +2724,7 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class DigitalTwinMetadata 
+    public partial class TwinMetadata 
     {
         [Newtonsoft.Json.JsonProperty("$model", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2332,7 +2744,7 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class BaseDigitalTwin 
+    public partial class TwinInstance 
     {
         [Newtonsoft.Json.JsonProperty("$dtId", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2344,7 +2756,7 @@ namespace Tributech.Dsk.CatalogApi.Client
     
         [Newtonsoft.Json.JsonProperty("$metadata", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public DigitalTwinMetadata Metadata { get; set; } = new DigitalTwinMetadata();
+        public TwinMetadata Metadata { get; set; } = new TwinMetadata();
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2425,7 +2837,7 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class BasicRelationship 
+    public partial class TwinRelationship 
     {
         [Newtonsoft.Json.JsonProperty("$relationshipId", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2460,15 +2872,15 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class DigitalTwinModel 
+    public partial class TwinGraph 
     {
         [Newtonsoft.Json.JsonProperty("digitalTwins", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<BaseDigitalTwin> DigitalTwins { get; set; } = new System.Collections.ObjectModel.Collection<BaseDigitalTwin>();
+        public System.Collections.Generic.ICollection<TwinInstance> DigitalTwins { get; set; } = new System.Collections.ObjectModel.Collection<TwinInstance>();
     
         [Newtonsoft.Json.JsonProperty("relationships", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
-        public System.Collections.Generic.ICollection<BasicRelationship> Relationships { get; set; } = new System.Collections.ObjectModel.Collection<BasicRelationship>();
+        public System.Collections.Generic.ICollection<TwinRelationship> Relationships { get; set; } = new System.Collections.ObjectModel.Collection<TwinRelationship>();
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
@@ -2483,91 +2895,271 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum ArraySchemaType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Array")]
-        Array = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum EnumSchemaType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Enum")]
-        Enum = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum MapSchemaType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Map")]
-        Map = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum ObjectSchemaType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Object")]
-        Object = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum Type
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Property")]
-        Property = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum RelationshipType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Relationship")]
-        Relationship = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum ComponentType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Component")]
-        Component = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum CommandType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Command")]
-        Command = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum InterfaceSchemaType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Enum")]
-        Enum = 0,
-    
-        [System.Runtime.Serialization.EnumMember(Value = @"Map")]
-        Map = 1,
-    
-        [System.Runtime.Serialization.EnumMember(Value = @"Object")]
-        Object = 2,
-    
-        [System.Runtime.Serialization.EnumMember(Value = @"Array")]
-        Array = 3,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum InterfaceType
+    public enum _type
     {
         [System.Runtime.Serialization.EnumMember(Value = @"Interface")]
         Interface = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Property")]
+        Property = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Relationship")]
+        Relationship = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Telemetry")]
+        Telemetry = 3,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Component")]
+        Component = 4,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Command")]
+        Command = 5,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Array")]
+        Array = 6,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Enum")]
+        Enum = 7,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Map")]
+        Map = 8,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Object")]
+        Object = 9,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Acceleration")]
+        Acceleration = 10,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Angle")]
+        Angle = 11,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AngularAcceleration")]
+        AngularAcceleration = 12,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AngularVelocity")]
+        AngularVelocity = 13,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Area")]
+        Area = 14,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Capacitance")]
+        Capacitance = 15,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Current")]
+        Current = 16,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DataRate")]
+        DataRate = 17,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DataSize")]
+        DataSize = 18,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Density")]
+        Density = 19,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Distance")]
+        Distance = 20,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"ElectricCharge")]
+        ElectricCharge = 21,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Energy")]
+        Energy = 22,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Force")]
+        Force = 23,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Frequency")]
+        Frequency = 24,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Humidity")]
+        Humidity = 25,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Illuminance")]
+        Illuminance = 26,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Inductance")]
+        Inductance = 27,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Latitude")]
+        Latitude = 28,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Longitude")]
+        Longitude = 29,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Length")]
+        Length = 30,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Luminance")]
+        Luminance = 31,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Luminosity")]
+        Luminosity = 32,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LuminousFlux")]
+        LuminousFlux = 33,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LuminousIntensity")]
+        LuminousIntensity = 34,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MagneticFlux")]
+        MagneticFlux = 35,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MagneticInduction")]
+        MagneticInduction = 36,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Mass")]
+        Mass = 37,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MassFlowRate")]
+        MassFlowRate = 38,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Power")]
+        Power = 39,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Pressure")]
+        Pressure = 40,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"RelativeHumidity")]
+        RelativeHumidity = 41,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Resistance")]
+        Resistance = 42,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"SoundPressure")]
+        SoundPressure = 43,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Temperature")]
+        Temperature = 44,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Thrust")]
+        Thrust = 45,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"TimeSpan")]
+        TimeSpan = 46,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Torque")]
+        Torque = 47,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Velocity")]
+        Velocity = 48,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Voltage")]
+        Voltage = 49,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Volume")]
+        Volume = 50,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"VolumeFlowRate")]
+        VolumeFlowRate = 51,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AccelerationUnit")]
+        AccelerationUnit = 52,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AngleUnit")]
+        AngleUnit = 53,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AngularAccelerationUnit")]
+        AngularAccelerationUnit = 54,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AngularVelocityUnit")]
+        AngularVelocityUnit = 55,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"AreaUnit")]
+        AreaUnit = 56,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"CapacitanceUnit")]
+        CapacitanceUnit = 57,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"ChargeUnit")]
+        ChargeUnit = 58,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"CurrentUnit")]
+        CurrentUnit = 59,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DataRateUnit")]
+        DataRateUnit = 60,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DataSizeUnit")]
+        DataSizeUnit = 61,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"DensityUnit")]
+        DensityUnit = 62,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"EnergyUnit")]
+        EnergyUnit = 63,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"ForceUnit")]
+        ForceUnit = 64,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"FrequencyUnit")]
+        FrequencyUnit = 65,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"IlluminanceUnit")]
+        IlluminanceUnit = 66,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"InductanceUnit")]
+        InductanceUnit = 67,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LengthUnit")]
+        LengthUnit = 68,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LuminanceUnit")]
+        LuminanceUnit = 69,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LuminousFluxUnit")]
+        LuminousFluxUnit = 70,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"LuminousIntensityUnit")]
+        LuminousIntensityUnit = 71,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MagneticFluxUnit")]
+        MagneticFluxUnit = 72,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MagneticInductionUnit")]
+        MagneticInductionUnit = 73,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MassUnit")]
+        MassUnit = 74,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"MassFlowRateUnit")]
+        MassFlowRateUnit = 75,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"PowerUnit")]
+        PowerUnit = 76,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"PressureUnit")]
+        PressureUnit = 77,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"ResistanceUnit")]
+        ResistanceUnit = 78,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"SoundPressureUnit")]
+        SoundPressureUnit = 79,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"TemperatureUnit")]
+        TemperatureUnit = 80,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"TimeUnit")]
+        TimeUnit = 81,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"TorqueUnit")]
+        TorqueUnit = 82,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"Unitless")]
+        Unitless = 83,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"VelocityUnit")]
+        VelocityUnit = 84,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"VoltageUnit")]
+        VoltageUnit = 85,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"VolumeUnit")]
+        VolumeUnit = 86,
+    
+        [System.Runtime.Serialization.EnumMember(Value = @"VolumeFlowRateUnit")]
+        VolumeFlowRateUnit = 87,
     
     }
     
@@ -2595,26 +3187,25 @@ namespace Tributech.Dsk.CatalogApi.Client
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum Type2
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Telemetry")]
-        Telemetry = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
-    public enum ExpandedInterfaceType
-    {
-        [System.Runtime.Serialization.EnumMember(Value = @"Interface")]
-        Interface = 0,
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
     public enum ExpandedInterfaceContext
     {
         [System.Runtime.Serialization.EnumMember(Value = @"dtmi:dtdl:context;2")]
         DtmiDtdlContext_2 = 0,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.5.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Contents2 
+    {
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+    
     
     }
 
